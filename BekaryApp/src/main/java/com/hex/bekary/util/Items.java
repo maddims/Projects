@@ -2,7 +2,7 @@ package com.hex.bekary.util;
 
 public enum Items {
 	
-	VS,
+	VS5,
 	MB11,
 	CF;
 }

@@ -9,17 +9,17 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.hex.bekary.service.BekaryService;
+import com.hex.bekary.buslogic.PackageAllocationService;
 
 public class PackageAllocationTest {
 
-	public BekaryService bekaryService;
+	public PackageAllocationService packageAllocationService;
 	Integer noOfItemsOrdered;
 	Integer[] packagesAvailable;
 	
 	@Before
 	public void init() {
-		bekaryService = new BekaryServiceImpl();
+		packageAllocationService = new PackageAllocationService();
 		noOfItemsOrdered = 10;
 		packagesAvailable = new Integer[]{2,5,3};
 		
@@ -29,7 +29,7 @@ public class PackageAllocationTest {
 	public void testMinumumPackagesToBeAllocatedWithValidInput() {
 		
 		List<Integer> minimumPackgesCalculated;
-		minimumPackgesCalculated = bekaryService.minimumPackagesToBeAllocated(noOfItemsOrdered, packagesAvailable);
+		minimumPackgesCalculated = packageAllocationService.minimumPackagesToBeAllocated(noOfItemsOrdered, packagesAvailable);
 		assertNotNull(minimumPackgesCalculated);
 		assertEquals(2, minimumPackgesCalculated.size());		
 	}
@@ -38,7 +38,7 @@ public class PackageAllocationTest {
 	public void testMinumumPackagesToBeAllocatedWithInValidInput() {
 		
 		List<Integer> minimumPackgesCalculated;
-		minimumPackgesCalculated = bekaryService.minimumPackagesToBeAllocated(noOfItemsOrdered, null);
+		minimumPackgesCalculated = packageAllocationService.minimumPackagesToBeAllocated(noOfItemsOrdered, null);
 		assertNull(minimumPackgesCalculated);
 		assertEquals(0, minimumPackgesCalculated.size());	
 		

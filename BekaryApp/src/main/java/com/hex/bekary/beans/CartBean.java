@@ -17,6 +17,10 @@ public class CartBean {
 	}
 	
 	
+	public CartBean() {
+	}
+
+
 	public String getItemName() {
 		return itemName;
 	}
@@ -46,6 +50,13 @@ public class CartBean {
 	}
 	public void setTotalCost(Double totalCost) {
 		this.totalCost = totalCost;
+	}
+
+
+	@Override
+	public String toString() {
+		return "CartBean [itemName=" + itemName + ", itemCode=" + itemCode + ", quantity=" + quantity + ", description="
+				+ description + ", totalCost=" + totalCost + "]";
 	}
 	
 	

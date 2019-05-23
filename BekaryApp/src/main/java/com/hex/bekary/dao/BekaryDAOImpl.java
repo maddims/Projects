@@ -34,12 +34,12 @@ public class BekaryDAOImpl implements BekaryDAO{
 	}
 
 	@Override
-	public Map<String, List<Integer>> getAvailablePackagesPerItem() {
+	public Map<String, Integer[]> getAvailablePackagesPerItem() {
 		
-		Map<String, List<Integer>> getAvailablePackagesPerItem = new HashMap<>();
-		getAvailablePackagesPerItem.put(Items.VS.toString(), new ArrayList<Integer>(Arrays.asList(Packages.PKG_3.getPackage(),Packages.PKG_5.getPackage())));
-		getAvailablePackagesPerItem.put(Items.MB11.toString(), new ArrayList<Integer>(Arrays.asList(Packages.PKG_2.getPackage(),Packages.PKG_5.getPackage(),Packages.PKG_8.getPackage())));
-		getAvailablePackagesPerItem.put(Items.CF.toString(), new ArrayList<Integer>(Arrays.asList(Packages.PKG_3.getPackage(),Packages.PKG_5.getPackage(),Packages.PKG_9.getPackage())));
+		Map<String, Integer[]> getAvailablePackagesPerItem = new HashMap<>();
+		getAvailablePackagesPerItem.put(Items.VS5.toString(), new Integer[] {Packages.PKG_3.getPackage(),Packages.PKG_5.getPackage()});
+		getAvailablePackagesPerItem.put(Items.MB11.toString(), new Integer[] {Packages.PKG_2.getPackage(),Packages.PKG_5.getPackage(),Packages.PKG_8.getPackage()});
+		getAvailablePackagesPerItem.put(Items.CF.toString(), new Integer[] {Packages.PKG_3.getPackage(),Packages.PKG_5.getPackage(),Packages.PKG_9.getPackage()});
 		return getAvailablePackagesPerItem;
 	}
 

@@ -1,13 +1,23 @@
 package com.hex.bekary.service;
 
 import java.util.List;
+import java.util.Map;
+
+import com.hex.bekary.dao.BekaryDAO;
+import com.hex.bekary.dao.BekaryDAOImpl;
 
 public class BekaryServiceImpl implements BekaryService {
 
 	@Override
-	public List<Integer> minimumPackagesToBeAllocated(int noOfItemsOrdered, Integer[] packages) {
-		// TODO Auto-generated method stub
-		return null;
+	public Map<String, Double> getPackagesWithPrices() {
+		BekaryDAO bekaryDAO = new BekaryDAOImpl();
+		return bekaryDAO.getPackagesWithPrices();
 	}
-
+	
+	@Override
+	public Map<String,Integer[]> getAvailablePackagesPerItem() {
+		BekaryDAO bekaryDAO = new BekaryDAOImpl();
+		return bekaryDAO.getAvailablePackagesPerItem();
+	}
+	
 }

@@ -1,9 +1,12 @@
 package com.hex.bekary.service;
 
-import java.util.List;
+
+import java.util.Map;
+
 
 public interface BekaryService {
 
-	public List<Integer> minimumPackagesToBeAllocated(int noOfItemsOrdered, Integer packages[]);
+	Map<String, Double> getPackagesWithPrices();
 	
+	Map<String, Integer[]> getAvailablePackagesPerItem();
 }
