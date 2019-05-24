@@ -1,21 +1,16 @@
 package com.hex.bekary.beans;
 
+import java.util.List;
+
 public class CartBean {
 
 	private String itemName;
 	private String itemCode;
-	private Integer quantity;
+	private String quantity;
 	private String description;
-	private Double totalCost;
-	
-	public CartBean(String itemName, String itemCode, Integer quantity, String description, Double totalCost) {
-		this.itemName = itemName;
-		this.itemCode = itemCode;
-		this.quantity = quantity;
-		this.description = description;
-		this.totalCost = totalCost;
-	}
-	
+	private String totalCost;
+	private List<String> priceBreakDown;
+	private String itemHeaderInCart;
 	
 	public CartBean() {
 	}
@@ -33,10 +28,10 @@ public class CartBean {
 	public void setItemCode(String itemCode) {
 		this.itemCode = itemCode;
 	}
-	public Integer getQuantity() {
+	public String getQuantity() {
 		return quantity;
 	}
-	public void setQuantity(Integer quantity) {
+	public void setQuantity(String quantity) {
 		this.quantity = quantity;
 	}
 	public String getDescription() {
@@ -45,20 +40,38 @@ public class CartBean {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Double getTotalCost() {
+	public String getTotalCost() {
 		return totalCost;
 	}
-	public void setTotalCost(Double totalCost) {
+	public void setTotalCost(String totalCost) {
 		this.totalCost = totalCost;
+	}	
+	public List<String> getPriceBreakDown() {
+		return priceBreakDown;
+	}
+	public void setPriceBreakDown(List<String> priceBreakDown) {
+		this.priceBreakDown = priceBreakDown;
+	}
+
+
+	public String getItemHeaderInCart() {
+		return itemHeaderInCart;
+	}
+
+
+	public void setItemHeaderInCart(String itemHeaderInCart) {
+		this.itemHeaderInCart = itemHeaderInCart;
 	}
 
 
 	@Override
 	public String toString() {
 		return "CartBean [itemName=" + itemName + ", itemCode=" + itemCode + ", quantity=" + quantity + ", description="
-				+ description + ", totalCost=" + totalCost + "]";
+				+ description + ", totalCost=" + totalCost + ", priceBreakDown=" + priceBreakDown
+				+ ", itemHeaderInCart=" + itemHeaderInCart + "]";
 	}
 	
 	
 	
+
 }
