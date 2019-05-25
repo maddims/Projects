@@ -13,7 +13,7 @@ import com.hex.bekary.beans.CartBean;
 import com.hex.bekary.beans.ProductBean;
 import com.hex.bekary.util.PackagesWithPrice;
 
-public class ShippingSpaceService {
+public class ShippingSpaceService implements BekaryService{
 
 	public static Logger log = LogManager.getLogger();
 	private static DecimalFormat priceFormat = new DecimalFormat("#.##");
@@ -60,7 +60,7 @@ public class ShippingSpaceService {
 	}
 	
 	
-	private Map<Integer,Integer> countNoOfPackagesPerPackage(List<Integer> list) {
+	public Map<Integer,Integer> countNoOfPackagesPerPackage(List<Integer> list) {
 		Map<Integer,Integer> noOfPackagesPerPackage= new LinkedHashMap<>();
 		
 		list.forEach(pkg-> {

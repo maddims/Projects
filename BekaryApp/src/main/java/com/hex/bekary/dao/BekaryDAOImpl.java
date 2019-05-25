@@ -1,10 +1,7 @@
 package com.hex.bekary.dao;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 import com.hex.bekary.util.Items;
@@ -36,11 +33,11 @@ public class BekaryDAOImpl implements BekaryDAO{
 	@Override
 	public Map<String, Integer[]> getAvailablePackagesPerItem() {
 		
-		Map<String, Integer[]> getAvailablePackagesPerItem = new HashMap<>();
-		getAvailablePackagesPerItem.put(Items.VS5.toString(), new Integer[] {Packages.PKG_3.getPackage(),Packages.PKG_5.getPackage()});
-		getAvailablePackagesPerItem.put(Items.MB11.toString(), new Integer[] {Packages.PKG_2.getPackage(),Packages.PKG_5.getPackage(),Packages.PKG_8.getPackage()});
-		getAvailablePackagesPerItem.put(Items.CF.toString(), new Integer[] {Packages.PKG_3.getPackage(),Packages.PKG_5.getPackage(),Packages.PKG_9.getPackage()});
-		return getAvailablePackagesPerItem;
+		Map<String, Integer[]> availablePackagesPerItem = new HashMap<>();
+		availablePackagesPerItem.put(Items.VS5.toString(), new Integer[] {Packages.PKG_3.getPackage(),Packages.PKG_5.getPackage()});
+		availablePackagesPerItem.put(Items.MB11.toString(), new Integer[] {Packages.PKG_2.getPackage(),Packages.PKG_5.getPackage(),Packages.PKG_8.getPackage()});
+		availablePackagesPerItem.put(Items.CF.toString(), new Integer[] {Packages.PKG_3.getPackage(),Packages.PKG_5.getPackage(),Packages.PKG_9.getPackage()});
+		return availablePackagesPerItem;
 	}
 
 }
