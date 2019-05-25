@@ -13,12 +13,6 @@ public class PackageAllocationService {
 	
 	public List<Integer> minimumPackagesToBeAllocated(int noOfItemsOrdered, Integer[] packages) {
 		
-		System.out.println(noOfItemsOrdered+"After");
-		
-		for(int i=0;i<packages.length-1;i++) {
-			System.out.println(i);
-		}
-		
 		Integer tempArray[] = new Integer[noOfItemsOrdered + 1];
     	Integer minimumPackagesPossible[] = new Integer[noOfItemsOrdered + 1];
         tempArray[0] = 0;

@@ -9,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.hex.bekary.beans.CartBean;
+import com.hex.bekary.beans.ProductBean;
 import com.hex.bekary.buslogic.PackageAllocationService;
 import com.hex.bekary.input.AcceptInput;
 import com.hex.bekary.service.BekaryService;
@@ -26,7 +27,7 @@ public class BekaryApp{
 		BekaryService bekaryService = new BekaryServiceImpl();
 		ShippingSpaceService shippingSpaceService = new ShippingSpaceService();
 		
-		Map<String,CartBean> inputOrder = AcceptInput.takeInputOrder();
+		Map<String,ProductBean> inputOrder = AcceptInput.takeInputOrder();
 		
 
 		Map<String,Integer[]> availablePackages = bekaryService.getAvailablePackagesPerItem();

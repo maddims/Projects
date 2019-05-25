@@ -8,7 +8,7 @@ public enum PackagesWithPrice {
 	MB11_5(16.95),
 	MB11_8(24.95),
 	CF_3(5.95),
-	CF_5(9.85),
+	CF_5(9.95),
 	CF_9(16.99);
 	
 	private final double price;
