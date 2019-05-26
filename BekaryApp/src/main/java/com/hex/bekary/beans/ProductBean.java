@@ -8,12 +8,10 @@ public class ProductBean {
 	private String description;
 	private Double totalCost;
 	
-	public ProductBean(String itemName, String itemCode, Integer quantity, String description, Double totalCost) {
+	public ProductBean(String itemName, String itemCode, Integer quantity) {
 		this.itemName = itemName;
 		this.itemCode = itemCode;
 		this.quantity = quantity;
-		this.description = description;
-		this.totalCost = totalCost;
 	}
 	
 

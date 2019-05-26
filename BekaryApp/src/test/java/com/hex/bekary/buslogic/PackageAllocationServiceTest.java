@@ -36,9 +36,7 @@ class PackageAllocationServiceTest {
 	
 	@Test
 	public void testMinumumPackagesToBeAllocatedWithInValidInput() {
-		
-		assertThrows(BekaryAppException.class,() -> packageAllocationService.minimumPackagesToBeAllocated(noOfItemsOrdered, null));	
-		
+				assertThrows(BekaryAppException.class,() -> packageAllocationService.minimumPackagesToBeAllocated(noOfItemsOrdered, null));	
 	}
 
 }

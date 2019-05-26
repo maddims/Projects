@@ -15,29 +15,34 @@ public class PackageAllocationServiceImpl implements PackageAllocationService{
 	
 	public List<Integer> minimumPackagesToBeAllocated(int noOfItemsOrdered, Integer[] packages) {
 		
-		Integer tempArray[] = new Integer[noOfItemsOrdered + 1];
-    	Integer minimumPackagesPossible[] = new Integer[noOfItemsOrdered + 1];
-        tempArray[0] = 0;
+		Integer minimumPackagesPossibleForTotalPackages[] = new Integer[noOfItemsOrdered + 1];
+    	Integer packagesUsedToGetToal[] = new Integer[noOfItemsOrdered + 1];
+        minimumPackagesPossibleForTotalPackages[0] = 0;
     
         if(packages==null) {
         	log.error("Empty packages found");
         	throw new BekaryAppException("Empty packages found");
         }
         for(int possiblePackagesCount=1; possiblePackagesCount <= noOfItemsOrdered; possiblePackagesCount++){
-            tempArray[possiblePackagesCount] = Integer.MAX_VALUE-1;
-            minimumPackagesPossible[possiblePackagesCount] = -1;
+            minimumPackagesPossibleForTotalPackages[possiblePackagesCount] = Integer.MAX_VALUE-1;
+            packagesUsedToGetToal[possiblePackagesCount] = -1;
         }
         for(int pkg=0; pkg < packages.length; pkg++){
             for(int possiblePackagesCount=1; possiblePackagesCount <= noOfItemsOrdered; possiblePackagesCount++){
                 if(possiblePackagesCount >= packages[pkg]){
-                    if (tempArray[possiblePackagesCount - packages[pkg]] + 1 < tempArray[possiblePackagesCount]) {
-                        tempArray[possiblePackagesCount] = 1 + tempArray[possiblePackagesCount - packages[pkg]];
-                        minimumPackagesPossible[possiblePackagesCount] = pkg;
+                	int minPackagesToGetEachTotal=minimumPackagesPossibleForTotalPackages[possiblePackagesCount - packages[pkg]] + 1;
+                    if (minPackagesToGetEachTotal < minimumPackagesPossibleForTotalPackages[possiblePackagesCount]) {
+                        minimumPackagesPossibleForTotalPackages[possiblePackagesCount] = minPackagesToGetEachTotal;
+                        packagesUsedToGetToal[possiblePackagesCount] = pkg;
+                    }
+                    else if(minPackagesToGetEachTotal == minimumPackagesPossibleForTotalPackages[possiblePackagesCount]) {
+                    	if(packagesUsedToGetToal[possiblePackagesCount] < packages[pkg]);
+                    	packagesUsedToGetToal[possiblePackagesCount] = pkg;
                     }
                 }
             }
         }
-        return getNoOfPackagesAndPackageValues(minimumPackagesPossible,packages);
+        return getNoOfPackagesAndPackageValues(packagesUsedToGetToal,packages);
 	}
 	
 	

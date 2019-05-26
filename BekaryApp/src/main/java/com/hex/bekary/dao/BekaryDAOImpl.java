@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import com.hex.bekary.exceptions.BekaryAppException;
 import com.hex.bekary.util.Items;
 import com.hex.bekary.util.Packages;
 import com.hex.bekary.util.PackagesWithPrice;
@@ -27,6 +28,10 @@ public class BekaryDAOImpl implements BekaryDAO{
 		packagesWithPrice.put(PackagesWithPrice.CF_3.toString(), PackagesWithPrice.CF_3.getPrice());
 		packagesWithPrice.put(PackagesWithPrice.CF_5.toString(), PackagesWithPrice.CF_5.getPrice());
 		packagesWithPrice.put(PackagesWithPrice.CF_9.toString(), PackagesWithPrice.CF_9.getPrice());
+		
+		if(packagesWithPrice.isEmpty()){
+			throw new BekaryAppException("Packages&Prices weren't fetched, prices seems to be null");
+		}
 		return packagesWithPrice;
 	}
 
@@ -37,6 +42,9 @@ public class BekaryDAOImpl implements BekaryDAO{
 		availablePackagesPerItem.put(Items.VS5.toString(), new Integer[] {Packages.PKG_3.getPackage(),Packages.PKG_5.getPackage()});
 		availablePackagesPerItem.put(Items.MB11.toString(), new Integer[] {Packages.PKG_2.getPackage(),Packages.PKG_5.getPackage(),Packages.PKG_8.getPackage()});
 		availablePackagesPerItem.put(Items.CF.toString(), new Integer[] {Packages.PKG_3.getPackage(),Packages.PKG_5.getPackage(),Packages.PKG_9.getPackage()});
+		if(availablePackagesPerItem.isEmpty()){
+			throw new BekaryAppException("No Packages are Available");
+		}
 		return availablePackagesPerItem;
 	}
 
