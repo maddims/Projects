@@ -4,7 +4,6 @@ import com.hcl.db.nace.bean.Nace;
 import com.hcl.db.nace.repository.NaceRepository;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,5 +54,11 @@ public class IntegrationTest {
         assertThat(response.getBody().getLevel()).isEqualTo("1");
         assertThat(response.getBody().getNaceCode()).isEqualTo("A");
         assertThat(response.getBody().getDescription()).isEqualTo("AGRICULTURE, FORESTRY AND FISHING");
+    }
+
+    @Test
+    void givenInvalidNaceCode_getNaceDetails_shouldReturn404(){
+        ResponseEntity<Nace> response = restTemplate.getForEntity("/api/nace/NA", Nace.class);
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
     }
 }

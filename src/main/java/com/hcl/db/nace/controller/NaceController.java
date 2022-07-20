@@ -23,10 +23,4 @@ public class NaceController {
     public ResponseEntity<Nace> putNaceDetails(@RequestBody Nace nace){
         return  ResponseEntity.ok(naceService.putNaceDetails(nace));
     }
-
-    @ExceptionHandler
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    private void naceDetailsNotFoundException(NaceDetailsNotFoundException exception){
-
-    }
 }
