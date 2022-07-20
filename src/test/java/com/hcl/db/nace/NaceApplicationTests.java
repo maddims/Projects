@@ -1,10 +1,10 @@
-package com.hcl.db.nacl;
+package com.hcl.db.nace;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class NaclApplicationTests {
+class NaceApplicationTests {
 
 	@Test
 	void contextLoads() {

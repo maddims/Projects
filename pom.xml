@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.hcl.db</groupId>
-	<artifactId>nacl</artifactId>
+	<artifactId>nace</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>nacl</name>
-	<description>NACL project</description>
+	<name>nace</name>
+	<description>NACE project</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
