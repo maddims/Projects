@@ -1,18 +1,26 @@
 package com.hcl.db.nace.controller;
 
 import com.hcl.db.nace.bean.Nace;
+import com.hcl.db.nace.exception.NaceDetailsNotFoundException;
+import com.hcl.db.nace.service.NaceService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController()
 @RequestMapping("/api")
 public class NaceController {
 
+    @Autowired
+    private NaceService naceService;
     @GetMapping("/nace/{naceCode}")
     public ResponseEntity<Nace> getNaceDetails(@PathVariable String naceCode) {
-        return ResponseEntity.ok(Nace.builder().level("1").description("AGRICULTURE, FORESTRY AND FISHING").build());
+        return ResponseEntity.ok(naceService.getNaceDetails(naceCode));
+    }
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    private void naceDetailsNotFoundException(NaceDetailsNotFoundException exception){
+
     }
 }
