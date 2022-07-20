@@ -21,4 +21,8 @@ public class NaceService {
         }
         return nace;
     }
+
+    public Nace putNaceDetails(Nace nace) {
+        return naceRepository.save(nace);
+    }
 }

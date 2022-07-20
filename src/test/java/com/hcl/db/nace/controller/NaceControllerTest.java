@@ -3,15 +3,20 @@ package com.hcl.db.nace.controller;
 import com.hcl.db.nace.bean.Nace;
 import com.hcl.db.nace.exception.NaceDetailsNotFoundException;
 import com.hcl.db.nace.service.NaceService;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.*;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -44,5 +49,22 @@ public class NaceControllerTest {
 
         mockMvc.perform(MockMvcRequestBuilders.get("/api/nace/A"))
                 .andExpect(status().isNotFound());
+    }
+
+    @Test
+    void givenNaceDetails_putNaceDetails_shouldSaveNaceDetailsToDb() throws Exception {
+        JSONObject naceJsonObject = new JSONObject();
+        naceJsonObject.put("level","1");
+        naceJsonObject.put("naceCode","A");
+        naceJsonObject.put("description","AGRICULTURE, FORESTRY AND FISHING");
+
+        given(naceService.putNaceDetails(any())).willReturn(Nace.builder().level("1").naceCode("A").description("AGRICULTURE, FORESTRY AND FISHING").build());
+
+
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/nace/putNaceDetails").contentType(MediaType.APPLICATION_JSON).content(naceJsonObject.toString()))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("level").value("1"))
+                .andExpect(jsonPath("naceCode").value("A"))
+                .andExpect(jsonPath("description").value("AGRICULTURE, FORESTRY AND FISHING"));
     }
 }

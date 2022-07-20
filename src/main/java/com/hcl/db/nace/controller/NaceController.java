@@ -18,6 +18,12 @@ public class NaceController {
     public ResponseEntity<Nace> getNaceDetails(@PathVariable String naceCode) {
         return ResponseEntity.ok(naceService.getNaceDetails(naceCode));
     }
+
+    @PostMapping("/nace/putNaceDetails")
+    public ResponseEntity<Nace> putNaceDetails(@RequestBody Nace nace){
+        return  ResponseEntity.ok(naceService.putNaceDetails(nace));
+    }
+
     @ExceptionHandler
     @ResponseStatus(HttpStatus.NOT_FOUND)
     private void naceDetailsNotFoundException(NaceDetailsNotFoundException exception){
