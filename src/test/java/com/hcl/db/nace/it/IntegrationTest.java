@@ -1,6 +1,8 @@
 package com.hcl.db.nace.it;
 
 import com.hcl.db.nace.bean.Nace;
+import com.hcl.db.nace.repository.NaceRepository;
+import org.json.JSONException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +21,12 @@ public class IntegrationTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
+    @Autowired
+    private NaceRepository naceRepository;
+
     @Test
     void givenNaceCode_getNaceDetails_shouldReturnNaceDetailsForGivenNaceCode() {
+        naceRepository.save(Nace.builder().level("1").description("AGRICULTURE, FORESTRY AND FISHING").naceCode("A").build());
 
         ResponseEntity<Nace> response = restTemplate.getForEntity("/api/nace/A", Nace.class);
 

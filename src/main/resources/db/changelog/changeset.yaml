@@ -2,3 +2,28 @@ databaseChangeLog:
   - changeSet:
       id: 1
       author: sriphani
+      changes:
+        - createTable:
+            tableName: nace
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: INTEGER
+              - column:
+                  constraints:
+                    nullable: false
+                  name: nacelevel
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: nacecode
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: description
+                  type: VARCHAR(255)
