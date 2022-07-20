@@ -23,4 +23,22 @@ public class Nace {
     private String level;
     private String description;
 
+    @Column(name = "naceparent")
+    private String parent;
+
+    @Column(name = "naceorder")
+    private String order;
+
+    @Column(name = "thisitemincludes")
+    private String thisItemIncludes;
+
+    @Column(name = "thisitemalsoincludes")
+    private String thisItemAlsoIncludes;
+    private String rulings;
+    @Column(name = "thisitemexcludes")
+    private String thisItemExcludes;
+
+    @Column(name = "referencetoisisrev")
+    private String referenceToISICRev;
+
 }

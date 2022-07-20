@@ -35,7 +35,13 @@ public class NaceControllerTest {
     @Test
     void getNaceDetails_shouldReturnNaceDetails() throws Exception {
 
-        given(naceService.getNaceDetails(anyString())).willReturn(Nace.builder().level("1").description("AGRICULTURE, FORESTRY AND FISHING").build());
+        given(naceService.getNaceDetails(anyString())).willReturn(Nace.builder()
+                .level("1")
+                .description("AGRICULTURE, FORESTRY AND FISHING")
+                .naceCode("A")
+                .order("398481")
+                .thisItemIncludes("This section includes the exploitation of vegetal and animal natural resources, comprising the activities of growing of crops, raising and breeding of animals, harvesting of timber and other plants")
+                .build());
 
         mockMvc.perform(MockMvcRequestBuilders.get("/api/nace/A"))
                 .andExpect(status().isOk())
@@ -58,7 +64,13 @@ public class NaceControllerTest {
         naceJsonObject.put("naceCode","A");
         naceJsonObject.put("description","AGRICULTURE, FORESTRY AND FISHING");
 
-        given(naceService.putNaceDetails(any())).willReturn(Nace.builder().level("1").naceCode("A").description("AGRICULTURE, FORESTRY AND FISHING").build());
+        given(naceService.putNaceDetails(any())).willReturn(Nace.builder()
+                .level("1")
+                .description("AGRICULTURE, FORESTRY AND FISHING")
+                .naceCode("A")
+                .order("398481")
+                .thisItemIncludes("This section includes the exploitation of vegetal and animal natural resources, comprising the activities of growing of crops, raising and breeding of animals, harvesting of timber and other plants")
+                .build());
 
 
         mockMvc.perform(MockMvcRequestBuilders.post("/api/nace/putNaceDetails").contentType(MediaType.APPLICATION_JSON).content(naceJsonObject.toString()))

@@ -27,7 +27,13 @@ public class IntegrationTest {
     @Test
     void givenNaceCode_getNaceDetails_shouldReturnNaceDetailsForGivenNaceCode() {
         naceRepository.deleteAll();
-        naceRepository.save(Nace.builder().level("1").description("AGRICULTURE, FORESTRY AND FISHING").naceCode("A").build());
+        naceRepository.save(Nace.builder()
+                .level("1")
+                .description("AGRICULTURE, FORESTRY AND FISHING")
+                .naceCode("A")
+                .order("398481")
+                .thisItemIncludes("This section includes the exploitation of vegetal and animal natural resources, comprising the activities of growing of crops, raising and breeding of animals, harvesting of timber and other plants")
+                .build());
 
         ResponseEntity<Nace> response = restTemplate.getForEntity("/api/nace/A", Nace.class);
 
@@ -42,6 +48,8 @@ public class IntegrationTest {
         naceJsonObject.put("level","1");
         naceJsonObject.put("naceCode","A");
         naceJsonObject.put("description","AGRICULTURE, FORESTRY AND FISHING");
+        naceJsonObject.put("order","398481");
+        naceJsonObject.put("thisItemIncludes","This section includes the exploitation of vegetal and animal natural resources, comprising the activities of growing of crops, raising and breeding of animals, harvesting of timber and other plants");
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);

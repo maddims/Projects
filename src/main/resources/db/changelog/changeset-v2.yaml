@@ -1,0 +1,43 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: sriphani
+      changes:
+        - alterTable:
+            tableName: nace
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: naceorder
+                  type: String
+              - column:
+                  constraints:
+                    nullable: true
+                  name: naceparent
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: thisitemincludes
+                  type: VARCHAR2(4000 char)
+              - column:
+                  constraints:
+                    nullable: true
+                  name: thisitemalsoincludes
+                  type: VARCHAR2(4000 char)
+              - column:
+                  constraints:
+                    nullable: true
+                  name: rulings
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: true
+                  name: thisitemexcludes
+                  type: VARCHAR2(4000 char)
+              - column:
+                  constraints:
+                    nullable: true
+                  name: referencetoisisrev
+                  type: VARCHAR(255)
